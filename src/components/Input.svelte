@@ -69,13 +69,16 @@
 
 <div class="relative inline-block">
 	<label class="label">
-		<span>Digite sua palavra</span>
 		<input
-			class={`input input-${status.toString()}`}
+			placeholder="Digite sua palavra..."
+			class={`w-80 input input-${status.toString()}`}
 			type="text"
 			bind:value={input_value}
 			on:keydown={(e) => handleInput(e)}
 		/>
 	</label>
-	<span class="badge variant-filled-primary absolute -top-1 -right-1 z-10">Pontos: {Points}</span>
+	<span class="badge variant-filled-primary absolute -top-8 left-0 z-10"
+		>Velocidade: {1 + Points * 0.03}</span
+	>
+	<span class="badge variant-filled-primary absolute -top-8 right-0 z-10">Pontos: {Points}</span>
 </div>

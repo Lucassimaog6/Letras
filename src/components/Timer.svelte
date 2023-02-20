@@ -1,5 +1,6 @@
 <script>
 	import { ProgressRadial } from '@skeletonlabs/skeleton';
+	import { get } from 'svelte/store';
 	import { StorePoints } from '../store';
 	let num = 100;
 	let startInterval;
@@ -15,7 +16,7 @@
 			if (num === 0) {
 				timeout();
 			}
-		}, 1000);
+		}, 1000 / (1 + get(StorePoints) * 0.03));
 	}
 
 	function timeout() {
@@ -28,6 +29,6 @@
 	}
 </script>
 
-<div class="mb-5 w-40 aspect-square">
+<div class="mb-8 w-40 aspect-square">
 	<ProgressRadial font="100" value={num}>{num / 10}</ProgressRadial>
 </div>
