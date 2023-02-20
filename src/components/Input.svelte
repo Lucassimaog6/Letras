@@ -1,13 +1,17 @@
 <script>
-	import { StoreLetters } from '../store';
+	import { StoreLetters, StorePoints } from '../store';
 	let Letters;
 	let status = '';
 	let input_value = '';
 	export let grl;
-	let points = 0;
+	let Points = 0;
 
 	StoreLetters.subscribe((value) => {
 		Letters = value;
+	});
+
+	StorePoints.subscribe((value) => {
+		Points = value;
 	});
 
 	const verifyLetters = (_input_value) => {
@@ -40,7 +44,7 @@
 				grl();
 				input_value = '';
 				status_success();
-				points++;
+				StorePoints.set(Points + 1);
 			} else {
 				console.log('Palavra errada!');
 				input_value = '';
@@ -73,5 +77,5 @@
 			on:keydown={(e) => handleInput(e)}
 		/>
 	</label>
-	<span class="badge variant-filled-primary absolute -top-1 -right-1 z-10">Pontos: {points}</span>
+	<span class="badge variant-filled-primary absolute -top-1 -right-1 z-10">Pontos: {Points}</span>
 </div>
